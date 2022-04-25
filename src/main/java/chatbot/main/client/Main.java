@@ -12,5 +12,6 @@ public class Main {
         int port = Integer.parseInt(args[1]);
 
         new CjatbotClient(ip, port).start();
+        //new CjatbotClient("127.0.0.1",9000).start();
     }
 }
