@@ -78,9 +78,7 @@ public class CjatbotClient {
                 Request request = new Request(route);
                 request.send(model, pw);
             }
-
-
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
