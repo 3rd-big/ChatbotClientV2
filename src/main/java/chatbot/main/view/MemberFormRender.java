@@ -3,10 +3,9 @@ package chatbot.main.view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.Map;
 
-public class MemberLoginRender implements Renderer {
+public class MemberFormRender implements Renderer {
 
     @Override
     public String process(Map<String, Object> model, BufferedReader keyBoard, PrintWriter pw) {
@@ -28,16 +27,20 @@ public class MemberLoginRender implements Renderer {
         try {
             String input = keyBoard.readLine();
 
-            String[] loginInfo = input.split(" ");
-            Map<String, String> requestParam = new HashMap<>();
-            requestParam.put("id", loginInfo[0]);
-            requestParam.put("password", loginInfo[1]);
-            model.put("requestParam", requestParam);
+            if (input.equals("1")) {
+                route = "memberLoginForm";
+            } else if (input.equals("2")) {
+                route = "memberJoinForm";
+            } else {
+                model.put("errorMessage", "번호를 다시 입력해주세요");
+                route = this.process(model, keyBoard, pw);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return "memberLogin";
+        return route;
     }
+
 }

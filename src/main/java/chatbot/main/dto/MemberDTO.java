@@ -11,20 +11,19 @@ public class MemberDTO {
     public MemberDTO() {
     }
 
-    public MemberDTO(Long mno, String id, String password, String name, String mobile) {
-        this.mno = mno;
+    public MemberDTO(String id, String password, String name, String mobile) {
         this.id = id;
         this.password = password;
         this.name = name;
         this.mobile = mobile;
     }
 
-    public Long getMno() {
-        return mno;
-    }
-
-    public void setMno(Long mno) {
+    public MemberDTO(Long mno, String id, String password, String name, String mobile) {
         this.mno = mno;
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.mobile = mobile;
     }
 
     public String getId() {
@@ -57,5 +56,15 @@ public class MemberDTO {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    @Override
+    public String toString() {
+        return "MemberDTO{" +
+                "id='" + id + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", mobile='" + mobile + '\'' +
+                '}';
     }
 }

@@ -1,9 +1,7 @@
 package chatbot.main.client;
 
 import chatbot.main.common.Request;
-import chatbot.main.view.MemberListRender;
-import chatbot.main.view.MemberLoginRender;
-import chatbot.main.view.Renderer;
+import chatbot.main.view.*;
 import com.google.gson.Gson;
 
 import java.io.*;
@@ -22,9 +20,10 @@ public class CjatbotClient {
         this.IP = IP;
         this.PORT = PORT;
 
-        remdererMap.put("loginForm", new MemberLoginRender());
+        remdererMap.put("memberForm", new MemberFormRender());
+        remdererMap.put("memberLoginForm", new MemberLoginRender());
+        remdererMap.put("memberJoinForm", new MemberJoinFormRender());
         remdererMap.put("memberList", new MemberListRender());
-//        remdererMap.put("memberSave", new MemberSaveController());
     }
 
     void start() {
@@ -77,7 +76,6 @@ public class CjatbotClient {
                 System.out.println("route = " + route);
 
                 Request request = new Request(route);
-
                 request.send(model, pw);
             }
 
