@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Map;
 
-public class ReservationListRender implements Renderer {
+public class ReservationTimeUpdateRender implements Renderer {
 
     @Override
     public String process(Map<String, Object> model, BufferedReader keyBoard, PrintWriter pw) {
@@ -19,21 +19,16 @@ public class ReservationListRender implements Renderer {
         if (model.get("successMessage") != null) {
             System.out.println(model.get("successMessage"));
         }
-
-        Map<Object, Object> data = (Map<Object, Object>) model.get("render");
-        System.out.println("<예약 가능한 시간 및 인원>");
-        data.forEach((key, value) -> System.out.printf(key+"시 %.0f명\n", value));
-        System.out.println("예약 시간을 입력하세요(숫자만 입력)");
+        System.out.println("예약 인원을 입력하세요(숫자만 입력)");
         try {
             String input = keyBoard.readLine();
-            if (input == null || input.equals("0")) {
+            if (input == null) {
                 model.put("errorMessage", "입력없음 : 다시 입력해주세요");
                 route = this.process(model, keyBoard, pw);
             }
             String requestParam = input;
             model.put("requestParam", requestParam);
-
-            route = "reservationTimeUpdate";
+            route = "reservationPeopleUpdate";
 
         } catch (Exception e) {
             e.printStackTrace();

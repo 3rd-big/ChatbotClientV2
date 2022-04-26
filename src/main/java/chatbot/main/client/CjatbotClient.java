@@ -27,7 +27,8 @@ public class CjatbotClient {
 
         remdererMap.put("reservationForm", new ReservationFormRender());
         remdererMap.put("reservationList", new ReservationListRender());
-
+        remdererMap.put("reservationTimeUpdate", new ReservationTimeUpdateRender());
+        remdererMap.put("reservationPeopleUpdate", new ReservationPeopleUpdateRender());
 
         remdererMap.put("adminForm", new AdminFormRender());
         remdererMap.put("lookStore", new LookStoreRender());
