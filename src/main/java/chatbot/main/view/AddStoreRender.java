@@ -16,7 +16,14 @@ public class AddStoreRender implements Renderer {
         System.out.println(model.get("render").toString());
         String input;
         try {
-            input = keyBoard.readLine();
+            while (true) {
+                input = keyBoard.readLine();
+                if(!input.matches("^[가-힣a-zA-Z0-9]*$") || input.trim().isEmpty()){
+                    System.out.println("다시입력해주세요.");
+                    continue;
+                }
+                break;
+            }
 
 
             Map<String, String> requestParam = new HashMap<>();

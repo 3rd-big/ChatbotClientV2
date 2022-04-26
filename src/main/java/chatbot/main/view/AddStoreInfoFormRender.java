@@ -14,6 +14,8 @@ public class AddStoreInfoFormRender implements Renderer {
         banner();
         System.out.println(model.get("successMessage"));
         if (model.get("successMessage").toString().contains("실패")) return "adminForm";
+        if (model.get("successMessage").toString().contains("이미 존재하는")) return "adminForm";
+
         Map<String, String> requestParam = new HashMap<>();
         String stName = model.get("successMessage").toString();
         stName = stName.replace("입력한 [ ", "");
