@@ -24,6 +24,9 @@ public class CjatbotClient {
         remdererMap.put("memberLoginForm", new MemberLoginRender());
         remdererMap.put("memberJoinForm", new MemberJoinFormRender());
         remdererMap.put("memberList", new MemberListRender());
+
+        remdererMap.put("reservationForm", new ReservationFormRender());
+        remdererMap.put("reservationList", new ReservationListRender());
     }
 
     void start() {
@@ -53,6 +56,18 @@ public class CjatbotClient {
             pw.println(connectJsonString);
             pw.flush();
             // test connect end
+
+//            // test connect start 윤범님 테스트
+//            Gson gs = new Gson();
+//            Map<String, Object> connect = new HashMap<>();
+//            connect.put("route", "reservationForm");
+//            String connectJsonString = gs.toJson(connect);
+//            System.out.println("connectJsonString = " + connectJsonString);
+//
+//            pw.println(connectJsonString);
+//            pw.flush();
+//            // test connect end
+
 
 
             Gson gson = new Gson();
