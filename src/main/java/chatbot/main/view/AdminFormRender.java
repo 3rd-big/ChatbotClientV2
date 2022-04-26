@@ -16,9 +16,11 @@ public class AdminFormRender implements Renderer {
 
         if (model.get("errorMessage") != null) {
             System.out.println(model.get("errorMessage"));
+            model.remove("errorMessage");
         }
         if (model.get("successMessage") != null) {
             System.out.println(model.get("successMessage"));
+            model.remove("successMessage");
         }
 
         Map<String, String> data = (Map<String, String>) model.get("render");

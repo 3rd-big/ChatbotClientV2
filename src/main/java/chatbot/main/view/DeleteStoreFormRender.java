@@ -11,11 +11,23 @@ public class DeleteStoreFormRender implements Renderer {
         clearScreen();
         banner();
 
-        System.out.println(model.get("render"));
+        Map<String, String> data = (Map<String, String>) model.get("successMessage");
+        data.forEach((key, value) -> System.out.println("[가게고유번호 " + key + ", 가게이름: " + value + "]"));
 
+        System.out.println(model.get("render"));
+        String input;
         try {
-            String input = keyBoard.readLine();
-            model.put("requestParam", input);
+            while (true) {
+                input = keyBoard.readLine();
+                for (String key : data.keySet()
+                ) {
+                    if (input.equals(key)) {
+                        model.put("requestParam", input);
+                        return "deleteStore";
+                    }
+                }
+                System.out.println("삭제할 가게번호를 다시 입력해주세요.");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

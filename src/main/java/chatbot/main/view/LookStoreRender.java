@@ -12,7 +12,6 @@ public class LookStoreRender implements Renderer {
         clearScreen();
         banner();
 
-        //List<Object> data = (List<Object>) model.get("render");
         Map<String, String> data = (Map<String, String>) model.get("render");
         data.forEach((key, value) -> System.out.println("[가게고유번호 " + key + ", 가게이름: " + value + "]"));
 

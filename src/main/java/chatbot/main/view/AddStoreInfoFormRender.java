@@ -12,10 +12,10 @@ public class AddStoreInfoFormRender implements Renderer {
     public String process(Map<String, Object> model, BufferedReader keyBoard, PrintWriter pw) {
         clearScreen();
         banner();
-        System.out.println(model.get("render"));
-        if (model.get("render").toString().contains("실패")) return "adminForm";
+        System.out.println(model.get("successMessage"));
+        if (model.get("successMessage").toString().contains("실패")) return "adminForm";
         Map<String, String> requestParam = new HashMap<>();
-        String stName = model.get("render").toString();
+        String stName = model.get("successMessage").toString();
         stName = stName.replace("입력한 [ ", "");
         stName = stName.replace(" ] 가게 제휴 등록 성공", "");
 

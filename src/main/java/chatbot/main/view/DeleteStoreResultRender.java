@@ -9,7 +9,8 @@ public class DeleteStoreResultRender implements Renderer {
     public String process(Map<String, Object> model, BufferedReader keyBoard, PrintWriter pw) {
         clearScreen();
         banner();
-        System.out.println(model.get("render"));
+        //System.out.println(model.get("render"));
+        System.out.println(model.get("successMessage"));
         return "adminForm";
     }
 }
