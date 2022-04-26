@@ -34,7 +34,7 @@ public class ReservationPeopleUpdateRender implements Renderer {
             }
             String requestParam = input;
             model.put("requestParam", requestParam);
-            route = "memberForm";//입력 받아야함
+            route = "reservationSmsSend";
 
         } catch (Exception e) {
             e.printStackTrace();
