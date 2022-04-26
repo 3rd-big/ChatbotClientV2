@@ -13,11 +13,11 @@ public class AddStoreRender implements Renderer {
         clearScreen();
         banner();
         String route = "";
-        System.out.println(model.get("render"));
-        String input = null;
+        System.out.println(model.get("render").toString());
+        String input;
         try {
             input = keyBoard.readLine();
-            System.out.println("input = " + input);
+
 
             Map<String, String> requestParam = new HashMap<>();
             requestParam.put("stName", input);

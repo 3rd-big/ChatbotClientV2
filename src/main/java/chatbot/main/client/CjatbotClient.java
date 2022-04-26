@@ -29,6 +29,10 @@ public class CjatbotClient {
         remdererMap.put("adminForm", new AdminFormRender());
         remdererMap.put("lookStore", new LookStoreRender());
         remdererMap.put("addStore", new AddStoreRender());
+        remdererMap.put("addStoreInfoForm", new AddStoreInfoFormRender());
+        remdererMap.put("addStoreResult", new AddStoreResultRender());
+        remdererMap.put("deleteStoreForm", new DeleteStoreFormRender());
+        remdererMap.put("deleteStoreResult", new DeleteStoreResultRender());
     }
 
     void start() {

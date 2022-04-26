@@ -30,10 +30,10 @@ public class AdminFormRender implements Renderer {
 
             if (input.equals("1")) return "lookStore";
             if (input.equals("2")) return "addStoreForm";
-            if (input.equals("3")) return "deleteStore";
+            if (input.equals("3")) return "deleteStoreForm";
             if (input.equals("4")) return "exit";
 
-            model.put("errorMessage", "번호를 다시 입력해주세요.");
+            //model.put("errorMessage", "번호를 다시 입력해주세요.");
             return this.process(model, keyBoard, pw);
 
         } catch (IOException e) {
