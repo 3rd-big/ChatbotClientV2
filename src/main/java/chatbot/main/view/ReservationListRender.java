@@ -1,11 +1,10 @@
 package chatbot.main.view;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
-public class MemberFormRender implements Renderer {
+public class ReservationListRender implements Renderer {
 
     @Override
     public String process(Map<String, Object> model, BufferedReader keyBoard, PrintWriter pw) {
@@ -22,27 +21,19 @@ public class MemberFormRender implements Renderer {
         }
 
         Map<String, String> data = (Map<String, String>) model.get("render");
-        data.forEach((key, value) -> System.out.println("[" + key + "] " + value));
+        data.forEach((key, value) -> System.out.println("예약 가능한 시간은 "+key+"시"+value+"명 입니다."));
 
         try {
             String input = keyBoard.readLine();
-
-            if (input.equals("1")) {
-                route = "memberLoginForm";
-            } else if (input.equals("2")) {
-                route = "memberJoinForm";
-            } else {
-                model.put("errorMessage", "번호를 다시 입력해주세요");
+            if (input == null) {
+                model.put("errorMessage", "입력없음 : 다시 입력해주세요");
                 route = this.process(model, keyBoard, pw);
             }
+            route = "???????????????";
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            model.remove("errorMessage");
         }
-
         return route;
     }
-
 }
