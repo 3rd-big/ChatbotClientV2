@@ -23,7 +23,6 @@ public class CjatbotClient {
         remdererMap.put("memberForm", new MemberFormRender());
         remdererMap.put("memberLoginForm", new MemberLoginRender());
         remdererMap.put("memberJoinForm", new MemberJoinFormRender());
-        remdererMap.put("memberList", new MemberListRender());
 
         remdererMap.put("reservationForm", new ReservationFormRender());
         remdererMap.put("reservationList", new ReservationListRender());
@@ -61,7 +60,7 @@ public class CjatbotClient {
             Map<String, Object> connect = new HashMap<>();
             connect.put("route", "memberForm");
             String connectJsonString = gs.toJson(connect);
-            System.out.println("connectJsonString = " + connectJsonString);
+//            System.out.println("connectJsonString = " + connectJsonString);
 
             pw.println(connectJsonString);
             pw.flush();
@@ -70,10 +69,9 @@ public class CjatbotClient {
 
             Gson gson = new Gson();
 
-
             while (true) {
                 String receivedJsonString = br.readLine();
-                System.out.println("receivedJsonString = " + receivedJsonString);
+//                System.out.println("receivedJsonString = " + receivedJsonString);
 
                 // json 문열 -> Map
                 Map<String, Object> model = gson.fromJson(receivedJsonString, HashMap.class);
@@ -82,17 +80,18 @@ public class CjatbotClient {
                     System.out.println("screenName 값이 없음");
                     return;
                 }
-                System.out.println("screenName = " + screenName);
+                if (screenName.equals("Disconnect")) {
+                    return;
+                }
+//                System.out.println("screenName = " + screenName);
 
                 Renderer renderer = remdererMap.get((String) screenName);
                 String route = renderer.process(model, keyBoard, pw);
-                System.out.println("route = " + route);
+//                System.out.println("route = " + route);
 
                 Request request = new Request(route);
                 request.send(model, pw);
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }

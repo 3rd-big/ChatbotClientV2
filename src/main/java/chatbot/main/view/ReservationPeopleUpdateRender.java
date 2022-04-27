@@ -9,7 +9,7 @@ public class ReservationPeopleUpdateRender implements Renderer {
     @Override
     public String process(Map<String, Object> model, BufferedReader keyBoard, PrintWriter pw) {
         clearScreen();
-
+        banner();
 
         String route = "";
 

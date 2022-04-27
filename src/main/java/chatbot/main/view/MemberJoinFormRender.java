@@ -35,14 +35,6 @@ public class MemberJoinFormRender implements Renderer {
             System.out.println("input = " + input);
 
             String[] joinInfo = input.split(" ");
-            System.out.println("Arrays.stream(joinInfo).toArray() = " + Arrays.stream(joinInfo).toArray());
-
-//            MemberDTO member = new MemberDTO(joinInfo[0], joinInfo[1], joinInfo[2], joinInfo[3]);
-//            model.put("member", member); // 1방안
-
-//            Gson gson = new Gson();
-//            model.put("member", gson.toJson(member)); // 2방안
-//
             Map<String, String> requestParam = new HashMap<>();
             requestParam.put("id", joinInfo[0]);
             requestParam.put("password", joinInfo[1]);

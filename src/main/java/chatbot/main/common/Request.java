@@ -15,7 +15,7 @@ public class Request {
 
     public void send(Map<String, Object> model, PrintWriter pw){
         String requestData = modelToJsonString(model);
-        System.out.println("requestData = " + requestData);
+//        System.out.println("requestData = " + requestData);
         pw.println(requestData);
         pw.flush();
     }

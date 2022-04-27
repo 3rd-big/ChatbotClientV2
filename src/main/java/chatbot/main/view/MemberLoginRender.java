@@ -17,6 +17,7 @@ public class MemberLoginRender implements Renderer {
 
         if (model.get("errorMessage") != null) {
             System.out.println(model.get("errorMessage"));
+            model.remove("errorMessage");
         }
         if (model.get("successMessage") != null) {
             System.out.println(model.get("successMessage"));
@@ -29,10 +30,16 @@ public class MemberLoginRender implements Renderer {
             String input = keyBoard.readLine();
 
             String[] loginInfo = input.split(" ");
-            Map<String, String> requestParam = new HashMap<>();
-            requestParam.put("id", loginInfo[0]);
-            requestParam.put("password", loginInfo[1]);
-            model.put("requestParam", requestParam);
+
+            if (loginInfo.length != 2) {
+                model.put("errorMessage", "아이디와 비밀번호를 공백기준으로 입력해주세요");
+                this.process(model, keyBoard, pw);
+            } else {
+                Map<String, String> requestParam = new HashMap<>();
+                requestParam.put("id", loginInfo[0]);
+                requestParam.put("password", loginInfo[1]);
+                model.put("requestParam", requestParam);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

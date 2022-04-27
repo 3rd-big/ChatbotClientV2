@@ -3,12 +3,14 @@ package chatbot.main.view;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ReservationTimeUpdateRender implements Renderer {
 
     @Override
     public String process(Map<String, Object> model, BufferedReader keyBoard, PrintWriter pw) {
         clearScreen();
+        banner();
 
 
         String route = "";
@@ -19,6 +21,11 @@ public class ReservationTimeUpdateRender implements Renderer {
         if (model.get("successMessage") != null) {
             System.out.println(model.get("successMessage"));
         }
+
+        Map<Object, Object> data = (Map<Object, Object>) model.get("render");
+        System.out.println("<예약 가능한 시간 및 인원>");
+        AtomicInteger num = new AtomicInteger(1);
+        data.forEach((key, value) -> System.out.printf("[" + num.getAndIncrement() + "] " + key+"시 %.0f명\n", value));
         System.out.println("예약 인원을 입력하세요(숫자만 입력)");
         try {
             String input = keyBoard.readLine();
