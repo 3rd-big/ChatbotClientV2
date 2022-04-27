@@ -30,10 +30,11 @@ public class ReservationListRender implements Renderer {
         System.out.println("예약 시간을 입력하세요(숫자만 입력)");
         try {
             String input = keyBoard.readLine();
-            if (input == null || input.equals("0")) {
+            if (data.containsKey(input) == false) {
                 model.put("errorMessage", "입력없음 : 다시 입력해주세요");
-                route = this.process(model, keyBoard, pw);
+                return this.process(model, keyBoard, pw);
             }
+            model.remove("errorMessage");
             String requestParam = input;
             model.put("requestParam", requestParam);
 

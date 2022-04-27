@@ -26,13 +26,13 @@ public class ReservationFormRender implements Renderer {
 //        data.forEach((key, value) -> System.out.println("<"+value+" --> "+key+">")); //식당 목록
         data.forEach((key, value) -> System.out.println("["+key+"] "+value)); //식당 목록
         System.out.println("예약을 원하는 식당 번호를 입력하세요(숫자만 입력)");
-
         try {
             String input = keyBoard.readLine();
-            if (input == null) {
+            if (data.containsKey(input) == false) {
                 model.put("errorMessage", "다시 입력해주세요");
-                route = this.process(model, keyBoard, pw);
+                return this.process(model, keyBoard, pw);
             }
+            model.remove("errorMessage");
             String requestParam = input;
             model.put("requestParam", requestParam);
 

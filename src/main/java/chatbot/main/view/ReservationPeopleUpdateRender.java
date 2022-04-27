@@ -32,6 +32,7 @@ public class ReservationPeopleUpdateRender implements Renderer {
                 model.put("errorMessage", "입력없음 : 다시 입력해주세요");
                 route = this.process(model, keyBoard, pw);
             }
+            model.remove("errorMessage");
             String requestParam = input;
             model.put("requestParam", requestParam);
             route = "reservationSmsSend";
